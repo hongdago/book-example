@@ -32,8 +32,8 @@ window.Superlists.initialize = function (params) {
         window.Superlists.updateItems(params.listApiUrl);
       }).fail(function (xhr) {
         $('.has-error').show();
-        if (xhr.responseJSON && xhr.responseJSON.error) {
-          $('.has-error .help-block').text(xhr.responseJSON.error);
+        if (xhr.responseJSON) {
+          $('.has-error .help-block').text(xhr.responseJSON.text || xhr.responseJSON.non_field_errors);
         } else {
           $('.has-error .help-block').text('Error talking to server. Please try again.');
         }
